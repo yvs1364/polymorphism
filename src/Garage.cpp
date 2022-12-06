@@ -14,7 +14,6 @@ void Garage::garageMenu(){
   cout << "2 for add vehicle" << endl;
   cout << "3 for delete vehicle" << endl;
   cin >> m_option;
-  cout << "---------------------------------------------" << endl << endl;
   if(m_option==1){
     showVehicle(m_allVehicle);
   }else if(m_option==2){
@@ -26,21 +25,29 @@ void Garage::garageMenu(){
   }
 }
 
-void Garage::showVehicle(std::vector<Vehicle *> vehicleList) const{
-  for (int i=0;i<vehicleList.size();++i){
+void Garage::showVehicle(vector<Vehicle *> pVehicleList) const{
+  cout << "Vehicle list size : " << pVehicleList.size() << endl;
+  for (int i=0;i<pVehicleList.size();++i){
     cout << "---------------------------------------------" << endl;
     cout << "Vehicle : " << i <<endl;
-    vehicleList[i]->showInfo();
+    pVehicleList[i]->showInfo();
     cout << "---------------------------------------------" << endl;
   }
 }
-void Garage::deleteVehicle(std::vector<Vehicle *> vehicleList){
-  cout << "which vehicle you want to delete?" << endl;
+void Garage::deleteVehicle(vector<Vehicle *> pVehicleList){
   int vehicleToDelete=0;
+  cout << "which vehicle you want to delete?" << endl;
   cin >> vehicleToDelete;
-  delete vehicleList[vehicleToDelete];
-  vehicleList[vehicleToDelete] = 0;
-  cout << "Vehicle has been deleted" <<endl;
+   for (int i=0;i<pVehicleList.size();++i){
+    if(i==vehicleToDelete){
+      delete pVehicleList[i];
+      pVehicleList[i] = 0;
+      m_allVehicle.erase(m_allVehicle.begin()+i);
+      cout << "Vehicle "<< i <<" has been deleted" <<endl;
+    }
+   }
+   // pVehicleList.erase(remove(pVehicleList.begin(),pVehicleList.end(),pVehicleList[vehicleToDelete]));
+
   garageMenu();
 }
 

@@ -10,8 +10,8 @@ class Garage{
     Garage(std::vector<Vehicle*> list);
     virtual ~Garage();
     void garageMenu();
-    virtual void showVehicle(std::vector<Vehicle *> vehicleList) const;
-    void deleteVehicle(std::vector<Vehicle *> vehicleList);
+    virtual void showVehicle(std::vector<Vehicle *> pVehicleList) const;
+    void deleteVehicle(std::vector<Vehicle *> pVehicleList);
     // void showWheel(Vehicle v) const;
     bool createVehicle();
     bool deleteVehicle();

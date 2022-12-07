@@ -8,13 +8,12 @@ class Garage{
   public:
     Garage();
     Garage(std::vector<Vehicle*> list);
-    virtual ~Garage();
+    ~Garage();
     void garageMenu();
-    virtual void showVehicle(std::vector<Vehicle *> pVehicleList) const;
+    void showVehicle(std::vector<Vehicle *> pVehicleList);
     void deleteVehicle(std::vector<Vehicle *> pVehicleList);
+    void createVehicle();
     // void showWheel(Vehicle v) const;
-    bool createVehicle();
-    bool deleteVehicle();
 
   protected:
     int m_option;

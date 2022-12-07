@@ -20,13 +20,12 @@ using namespace std;
 int main(int argc, const char** argv) {
 
   vector<Vehicle*> pVehicleList;
-  pVehicleList.push_back(new Vehicle(15000));
   pVehicleList.push_back(new Moto(7945, 2012,317));
+  pVehicleList.push_back(new Moto(5000, 2002, 250));
   pVehicleList.push_back(new Car(8000, 2005,5));
   pVehicleList.push_back(new Truck(40000, 2001,5000));
   Garage garage(pVehicleList);
   garage.garageMenu();
 
-  // delete garage;
   return 0;
 }

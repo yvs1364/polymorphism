@@ -16,7 +16,7 @@ void Garage::garageMenu(){
   cout << "4 For leave garage" << endl;
   cin >> m_option;
   if(m_option==1){
-    showVehicle(m_allVehicle);
+    showVehicle(m_allVehicle,1);
   }else if(m_option==2){
     createVehicle();
   }else if (m_option==3){
@@ -28,19 +28,23 @@ void Garage::garageMenu(){
   }
 }
 
-void Garage::showVehicle(vector<Vehicle *> pVehicleList){
+void Garage::showVehicle(vector<Vehicle *> pVehicleList,int option){
   cout << "Vehicle list size : " << pVehicleList.size() << endl;
   for (int i=0;i<pVehicleList.size();++i){
     cout << "---------------------------------------------" << endl;
     cout << "Vehicle : " << i <<endl;
     pVehicleList[i]->showInfo();
+    showWheel(pVehicleList[i]);
     cout << "---------------------------------------------" << endl;
   }
-  // garageMenu();
+  if(option==1){ garageMenu(); }
+}
+void Garage::showWheel(Vehicle *v) const{
+  v->showWheelInfo();
 }
 
 void Garage::createVehicle(){
-  int typeOfVehicle=0, price=0, year=0, other=0;
+  int typeOfVehicle=0;
   cout << "---------------------------------------------" << endl;
   cout << "which type of vehicle you want to create?" << endl;
   cout << "1 for car " << endl;
@@ -49,36 +53,15 @@ void Garage::createVehicle(){
   cout << "4 For leave" << endl;
   cin >> typeOfVehicle;
 
-  switch (typeOfVehicle){
+  switch(typeOfVehicle){
   case 1:
-    cout << "Which price?" << endl;
-    cin >>price;
-    cout << "Which year?" << endl;
-    cin >> year;
-    cout << "How many doors?" << endl;
-    cin >> other;
-    m_allVehicle.push_back(new Car(price, year, other));
-    cout << "Car has been created" << endl;
+    createCar();
     break;
   case 2:
-    cout << "Which price?" << endl;
-    cin >> price;
-    cout << "Which year?" << endl;
-    cin >> year;
-    cout << "Max speed?" << endl;
-    cin >> other;
-    m_allVehicle.push_back(new Moto(price, year, other));
-    cout << "Moto has been created" << endl;
+    createMoto();
     break;
   case 3:
-    cout << "Which price?" << endl;
-    cin >> price;
-    cout << "Which year?" << endl;
-    cin >> year;
-    cout << "How many weight can carry?" << endl;
-    cin >> other;
-    m_allVehicle.push_back(new Truck(price, year, other));
-    cout << "Truck has been created" << endl;
+    createTruck();
     break;
   default:
     break;
@@ -87,7 +70,7 @@ void Garage::createVehicle(){
 }
 
 void Garage::deleteVehicle(vector<Vehicle *> pVehicleList){
-  showVehicle(pVehicleList);
+  showVehicle(pVehicleList,0);
   int vehicleToDelete=0;
   cout << "which vehicle you want to delete?" << endl;
   cin >> vehicleToDelete;
@@ -102,6 +85,37 @@ void Garage::deleteVehicle(vector<Vehicle *> pVehicleList){
   garageMenu();
 }
 
-// void Garage::showWheel(Vehicle *v) const{
-//   v->showWheelInfo();
-// }
+void Garage::createCar(){
+  int price=0, year=0, other=0;
+  cout << "Which price?" << endl;
+  cin >>price;
+  cout << "Which year?" << endl;
+  cin >> year;
+  cout << "How many doors?" << endl;
+  cin >> other;
+  m_allVehicle.push_back(new Car(price, year, other));
+  cout << "Car has been created" << endl;
+}
+void Garage::createMoto(){
+  int price=0, year=0, other=0;
+  cout << "Which price?" << endl;
+  cin >> price;
+  cout << "Which year?" << endl;
+  cin >> year;
+  cout << "Max speed?" << endl;
+  cin >> other;
+  m_allVehicle.push_back(new Moto(price, year, other));
+  cout << "Moto has been created" << endl;
+
+}
+void Garage::createTruck(){
+  int price=0, year=0, other=0;
+  cout << "Which price?" << endl;
+  cin >> price;
+  cout << "Which year?" << endl;
+  cin >> year;
+  cout << "How many weight can carry?" << endl;
+  cin >> other;
+  m_allVehicle.push_back(new Truck(price, year, other));
+  cout << "Truck has been created" << endl;
+}

@@ -10,10 +10,13 @@ class Garage{
     Garage(std::vector<Vehicle*> list);
     ~Garage();
     void garageMenu();
-    void showVehicle(std::vector<Vehicle *> pVehicleList);
+    void showVehicle(std::vector<Vehicle *> pVehicleList, int option);
     void deleteVehicle(std::vector<Vehicle *> pVehicleList);
     void createVehicle();
-    // void showWheel(Vehicle v) const;
+    void createCar();
+    void createMoto();
+    void createTruck();
+    void showWheel(Vehicle *v) const;
 
   protected:
     int m_option;

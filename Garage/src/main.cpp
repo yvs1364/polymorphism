@@ -13,10 +13,6 @@
 #include "Truck.cpp"
 using namespace std;
 
-// void showWheel(Vehicle *v){
-//   v->showWheelInfo();
-// }
-
 int main(int argc, const char** argv) {
 
   vector<Vehicle*> pVehicleList;

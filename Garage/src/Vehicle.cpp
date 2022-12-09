@@ -18,7 +18,3 @@ void Vehicle::showInfo() const{
     cout << "It's a Vehicle which cost : " << m_price << " Euros"<<endl;
   }
 }
-void Vehicle::showWheelInfo() const{
-  cout << "Vehicle not defined and therefore it has " << m_nbrWheel << " wheel." << endl;
-  cout << "---------------------------------------------" << endl;
-}

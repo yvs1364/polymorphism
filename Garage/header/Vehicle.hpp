@@ -11,7 +11,7 @@ class Vehicle{
     Vehicle(int price, int wheel, int year);
     virtual ~Vehicle();
     virtual void showInfo() const;
-    virtual void showWheelInfo() const;
+    virtual void showWheelInfo() const = 0; // Pure Virtual Functions
 
   protected:
     int m_price;
